@@ -3,65 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import BlogCard from "../components/BlogCard";
-
-const postList = [
-  {
-    author: "author",
-    content: "content",
-    detail_url: "detail_url",
-    get_comment_count: "get_comment_count",
-    get_like_count: "3",
-    get_view_count: "5",
-    image: "",
-    published_date: "published_date",
-    slug: "slug",
-    status: "status",
-    title: "title",
-    hasUserLiked: false,
-  },
-  {
-    author: "author",
-    content: "content",
-    detail_url: "detail_url",
-    get_comment_count: "get_comment_count",
-    get_like_count: "3",
-    get_view_count: "5",
-    image: "",
-    published_date: "published_date",
-    slug: "slug",
-    status: "status",
-    title: "title",
-    hasUserLiked: false,
-  },
-  {
-    author: "author",
-    content: "content",
-    detail_url: "detail_url",
-    get_comment_count: "get_comment_count",
-    get_like_count: "3",
-    get_view_count: "5",
-    image: "",
-    published_date: "published_date",
-    slug: "slug",
-    status: "status",
-    title: "title",
-    hasUserLiked: false,
-  },
-  {
-    author: "author",
-    content: "content",
-    detail_url: "detail_url",
-    get_comment_count: "get_comment_count",
-    get_like_count: "3",
-    get_view_count: "5",
-    image: "",
-    published_date: "published_date",
-    slug: "slug",
-    status: "status",
-    title: "title",
-    hasUserLiked: false,
-  },
-];
+import { postList } from "../helpers/DummyData";
 
 const useStyles = makeStyles((theme) => ({
   root: {

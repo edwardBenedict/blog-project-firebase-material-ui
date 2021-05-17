@@ -16,7 +16,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    minWidth: 345,
   },
   media: {
     height: 140,
@@ -84,12 +84,6 @@ export default function MediaCard({ post }) {
         </IconButton>
         <Typography variant="body2" color="textSecondary">
           {get_like_count}
-        </Typography>
-        <IconButton aria-label="view count" className={classes.image}>
-          <VisibilityIcon />
-        </IconButton>
-        <Typography variant="body2" color="textSecondary">
-          {get_view_count}
         </Typography>
         <IconButton aria-label="comment count" className={classes.image}>
           <ChatBubbleOutlineIcon />
