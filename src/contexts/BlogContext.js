@@ -9,8 +9,6 @@ export function useBlog() {
 
 export function BlogProvider({ children }) {
   const [currentBlogs, setCurrentBlogs] = useState();
-  const [detailBlog, setDetailBlog] = useState([]);
-  //   const [loading, setLoading] = useState(true);
 
   function addBlog(blogValue) {
     const blogRef = firebaseDB.ref("blogs");
@@ -46,7 +44,6 @@ export function BlogProvider({ children }) {
     addBlog,
     currentBlogs,
     getOneBlog,
-    detailBlog,
   };
 
   return <BlogContext.Provider value={value}>{children}</BlogContext.Provider>;
