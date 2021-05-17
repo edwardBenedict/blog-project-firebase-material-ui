@@ -5,17 +5,20 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Main from "../pages/Dashboard";
 // import Details from "../components/details/Details";
+import Profile from "../pages/Profile";
 import About from "../pages/About";
 import PrivateRouter from "./PrivateRouter";
+import NewBlog from "../pages/NewBlog.js";
 
 function AppRouter() {
   const [isAuth, setIsAuth] = useState(true);
 
   const AuthContainer = () => (
     <div>
-      <PrivateRouter isAuth={isAuth} exact path="/" component={Main} />
       {/* <PrivateRouter isAuth={isAuth} path="/details" component={Details} /> */}
-      <PrivateRouter isAuth={isAuth} path="/about" component={About} />
+      <PrivateRouter path="/about" component={About} />
+      <PrivateRouter path="/profile" component={Profile} />
+      <PrivateRouter path="/new-blog" component={NewBlog} />
     </div>
   );
 
@@ -28,7 +31,9 @@ function AppRouter() {
           exact
           component={() => <Login setIsAuth={setIsAuth} isAuth={isAuth} />}
         />
+        <Route path="/" exact component={Main} />
         <Route path="/register" exact component={Register} />
+        <Route path="/about" exact component={About} />
         <Route component={AuthContainer} />
       </Switch>
     </BrowserRouter>
