@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import BlogCard from "../components/BlogCard";
-import { postList } from "../helpers/DummyData";
 import { useBlog } from "../contexts/BlogContext";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
   control: {
     padding: theme.spacing(2),
   },
+  title: {
+    fontFamily: "Girassol",
+    textAlign: "center",
+  },
 }));
 
 const Main = () => {
@@ -28,7 +32,9 @@ const Main = () => {
 
   return (
     <div>
-      <h2>Dashboard</h2>
+      <Typography className={classes.title} variant="h3" noWrap>
+        Dashboard
+      </Typography>
       <>
         <Grid container className={classes.root} spacing={5} justify="center">
           <Grid item xs={9}>

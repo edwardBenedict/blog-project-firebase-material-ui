@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     display: "none",
+    fontFamily: "Girassol",
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
