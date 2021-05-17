@@ -2,7 +2,8 @@ import { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "../components/Navbar.js";
 import Login from "../pages/Login";
-import Main from "../pages/Main";
+import Register from "../pages/Register";
+import Main from "../pages/Dashboard";
 // import Details from "../components/details/Details";
 import About from "../pages/About";
 import PrivateRouter from "./PrivateRouter";
@@ -27,6 +28,7 @@ function AppRouter() {
           exact
           component={() => <Login setIsAuth={setIsAuth} isAuth={isAuth} />}
         />
+        <Route path="/register" exact component={Register} />
         <Route component={AuthContainer} />
       </Switch>
     </BrowserRouter>
