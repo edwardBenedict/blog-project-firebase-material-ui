@@ -9,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { useHistory } from "react-router-dom";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import placeholder from "../assets/placeholder.png";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -42,7 +41,6 @@ export default function MediaCard({ post }) {
     content,
     get_comment_count,
     get_like_count,
-    get_view_count,
     image,
     published_date,
     slug,
