@@ -8,16 +8,15 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import BookIcon from "@material-ui/icons/Book";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import { useAuth } from "../contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -98,6 +97,10 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     textDecoration: "none",
   },
+  maxWidthLogReg: {
+    textDecoration: "none",
+    color: "black",
+  },
 }));
 
 export default function PrimarySearchAppBar() {
@@ -105,6 +108,7 @@ export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const { currentUser, logout } = useAuth();
+  const history = useHistory();
 
   console.log(currentUser);
   console.log(currentUser?.email);
@@ -130,6 +134,10 @@ export default function PrimarySearchAppBar() {
     logout();
   };
 
+  const handleDashboard = () => {
+    history.push("/");
+  };
+
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -146,7 +154,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
 
@@ -164,20 +172,24 @@ export default function PrimarySearchAppBar() {
           onClose={handleMobileMenuClose}
         >
           <MenuItem>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <p>Messages</p>
-          </MenuItem>
-          <MenuItem>
             <IconButton aria-label="show 11 new notifications" color="inherit">
               <Badge badgeContent={11} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
             <p>Notifications</p>
+          </MenuItem>
+          <MenuItem onClick={handleLogout}>
+            <IconButton aria-label="show 4 new mails" color="inherit">
+              <LockOpenIcon />
+            </IconButton>
+            <p>Logout</p>
+          </MenuItem>
+          <MenuItem onClick={handleLogout}>
+            <IconButton aria-label="show 4 new mails" color="inherit">
+              <LockOpenIcon />
+            </IconButton>
+            <p>Profile</p>
           </MenuItem>
           <MenuItem onClick={handleProfileMenuOpen}>
             <IconButton
@@ -201,12 +213,22 @@ export default function PrimarySearchAppBar() {
           open={isMobileMenuOpen}
           onClose={handleMobileMenuClose}
         >
-          <MenuItem onClick={handleLogout}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <LockOpenIcon />
-            </IconButton>
-            <p>Logout</p>
-          </MenuItem>
+          <Link to="/login" className={classes.maxWidthLogReg}>
+            <MenuItem onClick={handleLogout}>
+              <IconButton aria-label="show 4 new mails" color="inherit">
+                <LockOpenIcon />
+              </IconButton>
+              <p>Login</p>
+            </MenuItem>
+          </Link>
+          <Link to="/register" className={classes.maxWidthLogReg}>
+            <MenuItem>
+              <IconButton aria-label="show 4 new mails" color="inherit">
+                <LockOpenIcon />
+              </IconButton>
+              <p>Register</p>
+            </MenuItem>
+          </Link>
         </Menu>
       )}
     </>
@@ -221,25 +243,15 @@ export default function PrimarySearchAppBar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={handleDashboard}
           >
-            <MenuIcon />
+            <BookIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
+          <Link to="/" className={classes.login}>
+            <Typography className={classes.title} variant="h6" noWrap>
+              Blog Master
+            </Typography>
+          </Link>
           <div className={classes.grow} />
           {currentUser?.email ? (
             <div className={classes.sectionDesktop}>
@@ -268,13 +280,15 @@ export default function PrimarySearchAppBar() {
               </IconButton>
             </div>
           ) : (
-            <div className={classes.loginRegDiv}>
-              <Link to="/login" className={classes.login}>
-                Login
-              </Link>
-              <Link to="/register" className={classes.register}>
-                Register
-              </Link>
+            <div className={classes.sectionDesktop}>
+              <div className={classes.loginRegDiv}>
+                <Link to="/login" className={classes.login}>
+                  Login
+                </Link>
+                <Link to="/register" className={classes.register}>
+                  Register
+                </Link>
+              </div>
             </div>
           )}
           <div className={classes.sectionMobile}>
