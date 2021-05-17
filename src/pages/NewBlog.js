@@ -15,7 +15,7 @@ const NewBlog = () => {
     image: "",
     published_date: Date.now(),
   });
-  const { addBlog, currentBlogs } = useBlog();
+  const { addBlog } = useBlog();
   const history = useHistory();
 
   const newBlogHandler = (e) => {

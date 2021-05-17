@@ -35,25 +35,31 @@ const useStyles = makeStyles({
   avatar: {
     marginBottom: "0.35em",
   },
+  cardContent: {
+    backgroundColor: "#efeefe",
+    height: "100px",
+  },
 });
 
 export default function MediaCard({ post }) {
   const {
+    id,
     author,
     content,
     get_comment_count,
     get_like_count,
     image,
     published_date,
-    slug,
     title,
     hasUserLiked = false,
   } = post;
   const classes = useStyles();
   const history = useHistory();
   const openDetails = () => {
-    history.push(`/detail/${slug}`);
+    history.push(`/detail/${id}`);
   };
+
+  // console.log(post);
 
   return (
     <Card className={classes.root}>
@@ -63,7 +69,7 @@ export default function MediaCard({ post }) {
           image={image || placeholder}
           title={title}
         />
-        <CardContent>
+        <CardContent className={classes.cardContent}>
           <Typography gutterBottom variant="h5" component="h2">
             {title}
           </Typography>

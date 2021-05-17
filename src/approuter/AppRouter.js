@@ -9,6 +9,7 @@ import Profile from "../pages/Profile";
 import About from "../pages/About";
 import PrivateRouter from "./PrivateRouter";
 import NewBlog from "../pages/NewBlog.js";
+import Details from "../pages/Details.js";
 
 function AppRouter() {
   const [isAuth, setIsAuth] = useState(true);
@@ -34,6 +35,7 @@ function AppRouter() {
         <Route path="/" exact component={Main} />
         <Route path="/register" exact component={Register} />
         <Route path="/about" exact component={About} />
+        <Route path="/detail/:id" exact component={Details} />
         <Route component={AuthContainer} />
       </Switch>
     </BrowserRouter>

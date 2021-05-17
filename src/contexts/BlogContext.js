@@ -9,12 +9,24 @@ export function useBlog() {
 
 export function BlogProvider({ children }) {
   const [currentBlogs, setCurrentBlogs] = useState();
+  const [detailBlog, setDetailBlog] = useState([]);
   //   const [loading, setLoading] = useState(true);
 
   function addBlog(blogValue) {
     const blogRef = firebaseDB.ref("blogs");
     blogRef.push(blogValue);
   }
+
+  function getOneBlog(id) {
+    const result = currentBlogs?.filter((item) => item.id === id);
+    // console.log(result);
+    return result;
+    // setDetailBlog(result);
+  }
+
+  // useEffect(() => {
+  //   getOneBlog(id);
+  // }, [id]);
 
   useEffect(() => {
     const blogRef = firebaseDB.ref("blogs");
@@ -33,6 +45,8 @@ export function BlogProvider({ children }) {
   const value = {
     addBlog,
     currentBlogs,
+    getOneBlog,
+    detailBlog,
   };
 
   return <BlogContext.Provider value={value}>{children}</BlogContext.Provider>;
