@@ -14,7 +14,7 @@ const NewBlog = () => {
     image: "",
     published_date: Date.now(),
   });
-  const { addBlog } = useBlog();
+  const { addBlog, currentBlogs } = useBlog();
 
   const newBlogHandler = (e) => {
     e.preventDefault();
@@ -22,10 +22,15 @@ const NewBlog = () => {
     console.log(newBlog);
   };
 
+  console.log("currentBlogs", currentBlogs);
+
   return (
     <div>
-      <BlogForm newBlog={newBlog} setNewBlog={setNewBlog} />
-      <button onClick={newBlogHandler}>Add</button>
+      <BlogForm
+        newBlog={newBlog}
+        setNewBlog={setNewBlog}
+        newBlogHandler={newBlogHandler}
+      />
     </div>
   );
 };

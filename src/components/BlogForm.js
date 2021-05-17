@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BlogForm({ newBlog, setNewBlog }) {
+export default function BlogForm({ newBlog, setNewBlog, newBlogHandler }) {
   const classes = useStyles();
 
   return (
@@ -55,7 +55,7 @@ export default function BlogForm({ newBlog, setNewBlog }) {
                 value={newBlog.title}
                 autoFocus
                 onChange={(e) =>
-                  setNewBlog([...newBlog, (newBlog.title = e.target.value)])
+                  setNewBlog({ ...newBlog, title: e.target.value })
                 }
               />
             </Grid>
@@ -69,6 +69,9 @@ export default function BlogForm({ newBlog, setNewBlog }) {
                 type="text"
                 id="image"
                 value={newBlog.image}
+                onChange={(e) =>
+                  setNewBlog({ ...newBlog, image: e.target.value })
+                }
               />
             </Grid>
             <Grid item xs={12}>
@@ -80,6 +83,9 @@ export default function BlogForm({ newBlog, setNewBlog }) {
                 value={newBlog.content}
                 fullWidth
                 rows={15}
+                onChange={(e) =>
+                  setNewBlog({ ...newBlog, content: e.target.value })
+                }
                 // defaultValue="Default Value"
                 variant="outlined"
               />
@@ -91,6 +97,7 @@ export default function BlogForm({ newBlog, setNewBlog }) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={newBlogHandler}
           >
             Submit
           </Button>

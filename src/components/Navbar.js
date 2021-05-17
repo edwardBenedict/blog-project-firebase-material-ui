@@ -102,9 +102,6 @@ export default function PrimarySearchAppBar() {
   const { currentUser, logout } = useAuth();
   const history = useHistory();
 
-  console.log(currentUser);
-  console.log(currentUser?.email);
-
   const isMenuOpen = Boolean(anchorEl);
 
   const handleProfileMenuOpen = (event) => {

@@ -9,12 +9,26 @@ export function useBlog() {
 
 export function BlogProvider({ children }) {
   const [currentBlogs, setCurrentBlogs] = useState();
-  const [loading, setLoading] = useState(true);
+  //   const [loading, setLoading] = useState(true);
 
   function addBlog(blogValue) {
     const blogRef = firebaseDB.ref("blogs");
     blogRef.push(blogValue);
   }
+
+  useEffect(() => {
+    const blogRef = firebaseDB.ref("blogs");
+    blogRef.on("value", (snapshot) => {
+      //   console.log(snapshot.val());
+      const blogs = snapshot.val();
+      const blogL = [];
+      for (let id in blogs) {
+        blogL.push({ id, ...blogs[id] });
+      }
+      //   console.log(blogL);
+      setCurrentBlogs(blogL);
+    });
+  }, []);
 
   const value = {
     addBlog,
