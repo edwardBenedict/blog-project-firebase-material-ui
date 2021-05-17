@@ -65,7 +65,7 @@ export default function BlogForm({ newBlog, setNewBlog, newBlogHandler }) {
                 required
                 fullWidth
                 name="image"
-                label="Image"
+                label="Image URL"
                 type="text"
                 id="image"
                 value={newBlog.image}

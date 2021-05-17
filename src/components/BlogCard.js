@@ -12,10 +12,12 @@ import { useHistory } from "react-router-dom";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import placeholder from "../assets/placeholder.png";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import moment from "moment";
 
 const useStyles = makeStyles({
   root: {
     minWidth: 345,
+    maxWidth: 345,
   },
   media: {
     height: 140,
@@ -52,6 +54,7 @@ export default function MediaCard({ post }) {
   const openDetails = () => {
     history.push(`/detail/${slug}`);
   };
+
   return (
     <Card className={classes.root}>
       <CardActionArea onClick={openDetails}>
@@ -65,7 +68,7 @@ export default function MediaCard({ post }) {
             {title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {published_date}
+            {moment(published_date).format("MMM DD, YYYY")}
           </Typography>
           <p className={classes.module}>{content}</p>
         </CardContent>

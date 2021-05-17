@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import BlogCard from "../components/BlogCard";
 import { postList } from "../helpers/DummyData";
+import { useBlog } from "../contexts/BlogContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,16 +24,17 @@ const useStyles = makeStyles((theme) => ({
 
 const Main = () => {
   const classes = useStyles();
+  const { currentBlogs } = useBlog();
 
   return (
     <div>
-      <h2>Dasboard</h2>
+      <h2>Dashboard</h2>
       <>
         <Grid container className={classes.root} spacing={5} justify="center">
           <Grid item xs={9}>
             <Grid container justify="center" spacing={5}>
-              {postList
-                ? postList.map((item, id) => (
+              {currentBlogs
+                ? currentBlogs.map((item, id) => (
                     <Grid key={id} item>
                       <BlogCard post={item} />
                     </Grid>

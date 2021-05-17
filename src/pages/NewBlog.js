@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import BlogForm from "../components/BlogForm";
+import { useHistory } from "react-router-dom";
 import { useBlog } from "../contexts/BlogContext";
 
 const NewBlog = () => {
@@ -15,14 +16,20 @@ const NewBlog = () => {
     published_date: Date.now(),
   });
   const { addBlog, currentBlogs } = useBlog();
+  const history = useHistory();
 
   const newBlogHandler = (e) => {
     e.preventDefault();
-    addBlog(newBlog);
-    console.log(newBlog);
+    try {
+      addBlog(newBlog);
+      // console.log(newBlog);
+      history.push("/");
+    } catch (error) {
+      console.log("Error", error);
+    }
   };
 
-  console.log("currentBlogs", currentBlogs);
+  // console.log("currentBlogs", currentBlogs);
 
   return (
     <div>
