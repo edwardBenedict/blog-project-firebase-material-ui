@@ -5,6 +5,7 @@ import Box from "@material-ui/core/Box";
 import BlogCard from "../components/BlogCard";
 import { useBlog } from "../contexts/BlogContext";
 import Typography from "@material-ui/core/Typography";
+import loadingGif from "../assets/loading.gif";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,13 +40,17 @@ const Main = () => {
         <Grid container className={classes.root} spacing={5} justify="center">
           <Grid item xs={9}>
             <Grid container justify="center" spacing={5}>
-              {currentBlogs
-                ? currentBlogs.map((item, id) => (
-                    <Grid key={id} item>
-                      <BlogCard post={item} />
-                    </Grid>
-                  ))
-                : "No data available"}
+              {currentBlogs === undefined ? (
+                <img src={loadingGif} alt="loading" />
+              ) : currentBlogs ? (
+                currentBlogs?.map((item, id) => (
+                  <Grid key={id} item>
+                    <BlogCard post={item} />
+                  </Grid>
+                ))
+              ) : (
+                "No data available"
+              )}
             </Grid>
           </Grid>
         </Grid>
