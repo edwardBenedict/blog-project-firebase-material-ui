@@ -31,14 +31,7 @@ const useStyles = makeStyles({
     // maxWidth: 700,
   },
   media: {
-    height: 300,
-  },
-  module: {
-    display: "-webkit-box",
-    "-webkit-line-clamp": 2,
-    "-webkit-box-orient": "vertical",
-    "text-overflow": "ellipsis",
-    overflow: "hidden",
+    minHeight: "30vh",
   },
   image: {
     padding: 3,
@@ -48,7 +41,7 @@ const useStyles = makeStyles({
   },
   cardContent: {
     backgroundColor: "#efeefe",
-    // height: "200px",
+    minHeight: "200px",
   },
   title: {
     fontFamily: "Girassol",
@@ -59,7 +52,10 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
-    marginTop: 20,
+    margin: 20,
+  },
+  dataStyle: {
+    textAlign: "center",
   },
 });
 
@@ -87,26 +83,32 @@ export default function Details({ match }) {
         result?.map((item, index) => (
           <div key={index}>
             <Card className={classes.cardRoot} key={index}>
-              <CardActionArea>
+              <div>
                 <CardMedia
                   className={classes.media}
                   image={item.image || placeholder}
                   title={item.title}
                 />
                 <CardContent className={classes.cardContent}>
-                  <Typography gutterBottom variant="h5" component="h2">
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="h2"
+                    className={classes.title}
+                  >
                     {item.title}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
                     component="p"
+                    className={classes.dataStyle}
                   >
                     {moment(item.published_date).format("MMM DD, YYYY")}
                   </Typography>
-                  <p className={classes.module}>{item.content}</p>
+                  <p>{item.content}</p>
                 </CardContent>
-              </CardActionArea>
+              </div>
               <CardActions>
                 <AccountCircle className={classes.avatar} />
                 <Typography gutterBottom variant="h6" component="h2">
