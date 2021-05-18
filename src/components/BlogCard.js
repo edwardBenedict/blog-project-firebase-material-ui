@@ -39,6 +39,10 @@ const useStyles = makeStyles({
     backgroundColor: "#efeefe",
     height: "100px",
   },
+  title: {
+    fontFamily: "Girassol",
+    color: "#046582",
+  },
 });
 
 export default function MediaCard({ post }) {
@@ -69,7 +73,12 @@ export default function MediaCard({ post }) {
           title={title}
         />
         <CardContent className={classes.cardContent}>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="h2"
+            className={classes.title}
+          >
             {title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">

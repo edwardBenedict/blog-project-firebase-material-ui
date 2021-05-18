@@ -144,6 +144,7 @@ export default function PrimarySearchAppBar() {
           transformOrigin={{ vertical: "top", horizontal: "right" }}
           open={isMenuOpen}
           onClose={handleMenuClose}
+          style={{ marginTop: "2rem", marginLeft: "1rem" }}
         >
           <MenuItem onClick={handleMenuClose}>
             <Link to="/profile" className={classes.linkStyle}>
@@ -166,7 +167,7 @@ export default function PrimarySearchAppBar() {
           transformOrigin={{ vertical: "top", horizontal: "right" }}
           open={isMenuOpen}
           onClose={handleMenuClose}
-          style={{ marginTop: "2rem" }}
+          style={{ marginTop: "2rem", marginLeft: "1.25rem" }}
         >
           <MenuItem onClick={handleMenuClose}>
             <Link to="/login" className={classes.linkStyle}>
