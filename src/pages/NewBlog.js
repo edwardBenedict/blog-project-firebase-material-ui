@@ -3,6 +3,7 @@ import { useAuth } from "../contexts/AuthContext";
 import BlogForm from "../components/BlogForm";
 import { useHistory } from "react-router-dom";
 import { useBlog } from "../contexts/BlogContext";
+import { toastSuccessNotify } from "../helpers/ToastNotify";
 
 const NewBlog = () => {
   const { currentUser } = useAuth();
@@ -24,6 +25,7 @@ const NewBlog = () => {
       addBlog(newBlog);
       // console.log(newBlog);
       history.push("/");
+      toastSuccessNotify("Blog added successfully!");
     } catch (error) {
       console.log("Error", error);
     }
