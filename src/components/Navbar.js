@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
+    "& span": {
+      fontSize: 30,
+      color: "wheat",
+    },
   },
   search: {
     position: "relative",
@@ -192,7 +196,7 @@ export default function PrimarySearchAppBar() {
           <div className={classes.grow} />
           <Link to="/" className={classes.login}>
             <Typography className={classes.title} variant="h6" noWrap>
-              Blog Master
+              ──── <span>{"<ed8en/>"}</span> Blog ────
             </Typography>
           </Link>
           <div className={classes.grow} />
