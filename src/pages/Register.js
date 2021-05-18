@@ -14,6 +14,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useAuth } from "../contexts/AuthContext";
 import loadingGif from "../assets/loading.gif";
+import googlePng from "../assets/google.png";
 
 const validationSchema = yup.object({
   email: yup
@@ -91,13 +92,21 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-evenly",
   },
+  googleImg: {
+    width: 75,
+    marginLeft: 10,
+  },
+  googleBtn: {
+    backgroundColor: "white",
+    fontWeight: "bold",
+  },
 }));
 
 function Register() {
   const classes = useStyles();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const { signup } = useAuth();
+  const { signup, loginWithGoogle } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -118,6 +127,11 @@ function Register() {
       setLoading(false);
     },
   });
+
+  const handleGoogleProvider = () => {
+    loginWithGoogle();
+    history.push("/");
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -173,14 +187,29 @@ function Register() {
                   />
                 </div>
               ) : (
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  className={classes.submit}
-                >
-                  Register
-                </Button>
+                <>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    className={classes.submit}
+                  >
+                    Register
+                  </Button>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    onClick={handleGoogleProvider}
+                    className={classes.googleBtn}
+                  >
+                    With{" "}
+                    <img
+                      src={googlePng}
+                      alt="google"
+                      className={classes.googleImg}
+                    />
+                  </Button>
+                </>
               )}
             </form>
           </Grid>
