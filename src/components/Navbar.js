@@ -184,13 +184,13 @@ export default function PrimarySearchAppBar() {
           >
             <img src={cwJpeg} alt="cw" className={classes.cwImg} />
           </IconButton>
+          <div className={classes.grow} />
           <Link to="/" className={classes.login}>
             <Typography className={classes.title} variant="h6" noWrap>
               Blog Master
             </Typography>
           </Link>
           <div className={classes.grow} />
-
           <div>
             <IconButton
               edge="end"
