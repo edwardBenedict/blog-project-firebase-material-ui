@@ -102,6 +102,10 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#046582",
   },
+  linkStyle: {
+    textDecoration: "none",
+    color: "black",
+  },
 }));
 
 export default function PrimarySearchAppBar() {
@@ -121,7 +125,7 @@ export default function PrimarySearchAppBar() {
   };
 
   const handleLogout = () => {
-    console.log("handleLogout");
+    handleMenuClose();
     logout();
   };
 
@@ -143,10 +147,14 @@ export default function PrimarySearchAppBar() {
           onClose={handleMenuClose}
         >
           <MenuItem onClick={handleMenuClose}>
-            <Link to="/profile">Profile</Link>
+            <Link to="/profile" className={classes.linkStyle}>
+              Profile
+            </Link>
           </MenuItem>
           <MenuItem onClick={handleMenuClose}>
-            <Link to="/new-blog">New</Link>
+            <Link to="/new-blog" className={classes.linkStyle}>
+              New
+            </Link>
           </MenuItem>
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
@@ -159,12 +167,17 @@ export default function PrimarySearchAppBar() {
           transformOrigin={{ vertical: "top", horizontal: "right" }}
           open={isMenuOpen}
           onClose={handleMenuClose}
+          style={{ marginTop: "2rem" }}
         >
           <MenuItem onClick={handleMenuClose}>
-            <Link to="/login">Login</Link>
+            <Link to="/login" className={classes.linkStyle}>
+              Login
+            </Link>
           </MenuItem>
-          <MenuItem onClick={handleLogout}>
-            <Link to="/register">Register</Link>
+          <MenuItem onClick={handleMenuClose}>
+            <Link to="/register" className={classes.linkStyle}>
+              Register
+            </Link>
           </MenuItem>
         </Menu>
       )}
