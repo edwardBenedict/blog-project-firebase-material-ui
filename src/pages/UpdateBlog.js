@@ -23,12 +23,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
-  avatar: {
-    padding: theme.spacing(13),
-    backgroundColor: "#046582",
-  },
   blogImg: {
-    width: 200,
+    width: 500,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -84,9 +80,7 @@ export default function UpdateBlog({ match }) {
     <Container component="main" maxWidth="xs" className={classes.root}>
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <img src={blogPng} alt="blog" className={classes.blogImg} />
-        </Avatar>
+        <img src={res?.image} alt="blog" className={classes.blogImg} />
         <Typography component="h1" variant="h5" className={classes.title}>
           ── Update Blog ──
         </Typography>
