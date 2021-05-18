@@ -58,14 +58,14 @@ const Main = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Box
+        {/* <Box
           display="flex"
           justifyContent="center"
           m={1}
           p={1}
           bgcolor="background.paper"
         >
-          {/* <Box p={1}>
+          <Box p={1}>
             {hasNext ? (
               <Button
                 variant="contained"
@@ -75,8 +75,8 @@ const Main = () => {
                 View More
               </Button>
             ) : null}
-          </Box> */}
-        </Box>
+          </Box>
+        </Box> */}
       </>
     </div>
   );
