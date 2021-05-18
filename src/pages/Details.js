@@ -32,7 +32,9 @@ const useStyles = makeStyles({
     // maxWidth: 700,
   },
   media: {
-    minHeight: "30vh",
+    // minHeight: "30vh",
+    height: "0",
+    paddingTop: "56.25%", // 16:9
   },
   image: {
     padding: 3,
