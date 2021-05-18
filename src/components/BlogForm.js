@@ -8,17 +8,21 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import blogPng from "../assets/blok.png";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(4),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
   avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    padding: theme.spacing(13),
+    backgroundColor: "lightgrey",
+  },
+  blogImg: {
+    width: 200,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -26,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  title: {
+    fontSize: 35,
+    fontFamily: "Girassol",
   },
 }));
 
@@ -37,9 +45,9 @@ export default function BlogForm({ newBlog, setNewBlog, newBlogHandler }) {
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <img src={blogPng} alt="blog" className={classes.blogImg} />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" className={classes.title}>
           New Blog
         </Typography>
         <form className={classes.form} noValidate>
