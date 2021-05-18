@@ -14,6 +14,9 @@ import { toastSuccessNotify } from "../helpers/ToastNotify";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: 90,
+  },
   paper: {
     marginTop: theme.spacing(4),
     display: "flex",
@@ -22,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     padding: theme.spacing(13),
-    backgroundColor: "lightgrey",
+    backgroundColor: "#046582",
   },
   blogImg: {
     width: 200,
@@ -78,7 +81,7 @@ export default function UpdateBlog({ match }) {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" className={classes.root}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     padding: theme.spacing(13),
-    backgroundColor: "lightgrey",
+    backgroundColor: "#046582",
   },
   blogImg: {
     width: 200,
