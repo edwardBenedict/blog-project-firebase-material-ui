@@ -16,10 +16,11 @@ import { useAuth } from "../contexts/AuthContext";
 import loadingGif from "../assets/loading.gif";
 
 const validationSchema = yup.object({
-  username: yup
-    .string("Enter your username")
-    .min(2, "Username should be of minimum 2 characters length.")
-    .required("Username is required"),
+  email: yup
+    .string("Enter your email")
+    .email("Email is invalid.")
+    .min(2, "email should be of minimum 2 characters length.")
+    .required("email is required"),
   password: yup.string("Enter your password").required("Password is required"),
 });
 
@@ -91,14 +92,14 @@ function Register() {
 
   const formik = useFormik({
     initialValues: {
-      username: "",
+      email: "",
       password: "",
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       setLoading(true);
       try {
-        await signup(values.username, values.password);
+        await signup(values.email, values.password);
         history.push("/");
         toastSuccessNotify("Registered successfully!");
       } catch (error) {
@@ -126,18 +127,16 @@ function Register() {
                 variant="outlined"
                 margin="normal"
                 fullWidth
-                id="username"
-                label="Username"
-                name="username"
-                autoComplete="username"
+                id="email"
+                label="Email"
+                name="email"
+                autoComplete="email"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 autoFocus
-                value={formik.values.username}
-                error={
-                  formik.touched.username && Boolean(formik.errors.username)
-                }
-                helperText={formik.touched.username && formik.errors.username}
+                value={formik.values.email}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
               />
               <TextField
                 variant="outlined"
@@ -175,10 +174,6 @@ function Register() {
                   Login
                 </Button>
               )}
-              {/* <div className={classes.bottomLink}>
-                <Link to="/">Dashboard</Link>
-                <Link to="/sign-up">Sign Up</Link>
-              </div> */}
             </form>
           </Grid>
         </Grid>

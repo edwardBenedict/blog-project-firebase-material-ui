@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import blokPng from "../assets/blok.png";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { toastSuccessNotify, toastErrorNotify } from "../helpers/ToastNotify";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -16,10 +16,11 @@ import { useAuth } from "../contexts/AuthContext";
 import loadingGif from "../assets/loading.gif";
 
 const validationSchema = yup.object({
-  username: yup
-    .string("Enter your username")
-    .min(2, "Username should be of minimum 2 characters length.")
-    .required("Username is required"),
+  email: yup
+    .string("Enter your email")
+    .email("Invalid email.")
+    .min(2, "Email should be of minimum 2 characters length.")
+    .required("Email is required"),
   password: yup.string("Enter your password").required("Password is required"),
 });
 
@@ -91,14 +92,14 @@ function Login() {
 
   const formik = useFormik({
     initialValues: {
-      username: "",
+      email: "",
       password: "",
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       setLoading(true);
       try {
-        await login(values.username, values.password);
+        await login(values.email, values.password);
         history.push("/");
         toastSuccessNotify("Logged in successfully!");
       } catch (error) {
@@ -126,18 +127,16 @@ function Login() {
                 variant="outlined"
                 margin="normal"
                 fullWidth
-                id="username"
-                label="Username"
-                name="username"
-                autoComplete="username"
+                id="email"
+                label="Email"
+                name="email"
+                autoComplete="email"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 autoFocus
-                value={formik.values.username}
-                error={
-                  formik.touched.username && Boolean(formik.errors.username)
-                }
-                helperText={formik.touched.username && formik.errors.username}
+                value={formik.values.email}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
               />
               <TextField
                 variant="outlined"
@@ -175,10 +174,6 @@ function Login() {
                   Login
                 </Button>
               )}
-              <div className={classes.bottomLink}>
-                <Link to="/">Dashboard</Link>
-                <Link to="/sign-up">Sign Up</Link>
-              </div>
             </form>
           </Grid>
         </Grid>
