@@ -39,7 +39,7 @@ const useStyles = makeStyles({
   },
   cardContent: {
     backgroundColor: "#efeefe",
-    height: "100px",
+    height: "125px",
   },
   title: {
     fontFamily: "Girassol",
@@ -68,8 +68,6 @@ export default function MediaCard({ post }) {
     }
     history.push(`/detail/${id}`);
   };
-
-  // console.log(post);
 
   return (
     <Card className={classes.root}>
