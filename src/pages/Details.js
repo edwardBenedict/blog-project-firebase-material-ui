@@ -17,6 +17,7 @@ import Button from "@material-ui/core/Button";
 import loadingGif from "../assets/loading.gif";
 import { useHistory } from "react-router-dom";
 import { toastSuccessNotify } from "../helpers/ToastNotify";
+import noData from "../assets/no-data.png";
 
 const useStyles = makeStyles({
   root: {
@@ -71,7 +72,6 @@ export default function Details({ match }) {
   const history = useHistory();
 
   const result = getOneBlog(match.params.id);
-  console.log({ result });
 
   const deleteHandler = (id) => {
     console.log("DeleteHandler", id);
@@ -161,7 +161,9 @@ export default function Details({ match }) {
       ) : result === undefined ? (
         <img src={loadingGif} alt="loading" />
       ) : (
-        <p>No data available.</p>
+        <>
+          <img src={noData} alt="no data" />
+        </>
       )}
     </div>
   );
