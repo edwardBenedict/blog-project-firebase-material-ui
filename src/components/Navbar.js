@@ -146,16 +146,12 @@ export default function PrimarySearchAppBar() {
           onClose={handleMenuClose}
           style={{ marginTop: "2rem", marginLeft: "1rem" }}
         >
-          <MenuItem onClick={handleMenuClose}>
-            <Link to="/profile" className={classes.linkStyle}>
-              Profile
-            </Link>
-          </MenuItem>
-          <MenuItem onClick={handleMenuClose}>
-            <Link to="/new-blog" className={classes.linkStyle}>
-              New
-            </Link>
-          </MenuItem>
+          <Link to="/profile" className={classes.linkStyle}>
+            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+          </Link>
+          <Link to="/new-blog" className={classes.linkStyle}>
+            <MenuItem onClick={handleMenuClose}>New</MenuItem>
+          </Link>
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
       ) : (
@@ -169,16 +165,12 @@ export default function PrimarySearchAppBar() {
           onClose={handleMenuClose}
           style={{ marginTop: "2rem", marginLeft: "1.25rem" }}
         >
-          <MenuItem onClick={handleMenuClose}>
-            <Link to="/login" className={classes.linkStyle}>
-              Login
-            </Link>
-          </MenuItem>
-          <MenuItem onClick={handleMenuClose}>
-            <Link to="/register" className={classes.linkStyle}>
-              Register
-            </Link>
-          </MenuItem>
+          <Link to="/login" className={classes.linkStyle}>
+            <MenuItem onClick={handleMenuClose}>Login</MenuItem>
+          </Link>
+          <Link to="/register" className={classes.linkStyle}>
+            <MenuItem onClick={handleMenuClose}>Register</MenuItem>
+          </Link>
         </Menu>
       )}
     </>
