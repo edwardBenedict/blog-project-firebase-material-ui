@@ -51,7 +51,6 @@ export default function MediaCard({ post }) {
     image,
     published_date,
     title,
-    hasUserLiked = false,
   } = post;
   const classes = useStyles();
   const history = useHistory();
@@ -87,7 +86,7 @@ export default function MediaCard({ post }) {
       </CardActions>
       <CardActions>
         <IconButton aria-label="add to favorites" className={classes.image}>
-          <FavoriteIcon color={hasUserLiked ? "secondary" : "primary"} />
+          <FavoriteIcon color={get_like_count > 0 ? "secondary" : "disabled"} />
         </IconButton>
         <Typography variant="body2" color="textSecondary">
           {get_like_count}
