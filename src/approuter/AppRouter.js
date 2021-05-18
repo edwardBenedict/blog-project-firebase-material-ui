@@ -20,6 +20,7 @@ function AppRouter() {
       <PrivateRouter path="/about" component={About} />
       <PrivateRouter path="/profile" component={Profile} />
       <PrivateRouter path="/new-blog" component={NewBlog} />
+      <PrivateRouter path="/detail/:id" exact component={Details} />
     </div>
   );
 
@@ -35,7 +36,6 @@ function AppRouter() {
         <Route path="/" exact component={Main} />
         <Route path="/register" exact component={Register} />
         <Route path="/about" exact component={About} />
-        <Route path="/detail/:id" exact component={Details} />
         <Route component={AuthContainer} />
       </Switch>
     </BrowserRouter>
