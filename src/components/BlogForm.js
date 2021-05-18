@@ -48,7 +48,7 @@ export default function BlogForm({ newBlog, setNewBlog, newBlogHandler }) {
           <img src={blogPng} alt="blog" className={classes.blogImg} />
         </Avatar>
         <Typography component="h1" variant="h5" className={classes.title}>
-          New Blog
+          ── New Blog ──
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>

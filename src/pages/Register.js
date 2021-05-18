@@ -129,7 +129,7 @@ function Register() {
               <img src={blokPng} style={{ width: 200 }} alt="candela" />
             </Avatar>
             <Typography className={classes.header} component="h1" variant="h5">
-              Register
+              ── Register ──
             </Typography>
             <form className={classes.form} onSubmit={formik.handleSubmit}>
               <TextField
@@ -179,7 +179,7 @@ function Register() {
                   variant="contained"
                   className={classes.submit}
                 >
-                  Login
+                  Register
                 </Button>
               )}
             </form>

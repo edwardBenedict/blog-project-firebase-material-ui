@@ -129,7 +129,7 @@ function Login() {
               <img src={blokPng} style={{ width: 200 }} alt="candela" />
             </Avatar>
             <Typography className={classes.header} component="h1" variant="h5">
-              Login
+              ── Login ──
             </Typography>
             <form className={classes.form} onSubmit={formik.handleSubmit}>
               <TextField

@@ -38,7 +38,7 @@ const Main = () => {
   return (
     <div className={classes.mainRoot}>
       <Typography className={classes.title} variant="h3" noWrap>
-        Dashboard
+        ──── Dashboard ────
       </Typography>
       <>
         <Grid container className={classes.root} spacing={5} justify="center">

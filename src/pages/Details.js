@@ -83,7 +83,7 @@ export default function Details({ match }) {
   return (
     <div className={classes.root}>
       <Typography className={classes.title} variant="h3" noWrap>
-        Details
+        ──── Details ────
       </Typography>
       {result?.length > 0 ? (
         result?.map((item, index) => (
