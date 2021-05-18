@@ -67,7 +67,7 @@ export default function UpdateBlog({ match }) {
   const updateBlogHandler = (e) => {
     e.preventDefault();
     updateBlog(res?.id, newBlog);
-    history.push("/");
+    history.push(`/detail/${res?.id}`);
     toastSuccessNotify("Updated successfully!");
   };
 
