@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import BlogCard from "../components/BlogCard";
 import { useBlog } from "../contexts/BlogContext";
 import Typography from "@material-ui/core/Typography";

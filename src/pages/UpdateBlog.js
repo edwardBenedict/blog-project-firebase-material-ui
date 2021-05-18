@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from "react";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -7,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import blogPng from "../assets/blok.png";
+import placeholderPng from "../assets/placeholder.png";
 import { useBlog } from "../contexts/BlogContext";
 import { useAuth } from "../contexts/AuthContext";
 import { toastSuccessNotify } from "../helpers/ToastNotify";
@@ -80,7 +79,11 @@ export default function UpdateBlog({ match }) {
     <Container component="main" maxWidth="xs" className={classes.root}>
       <CssBaseline />
       <div className={classes.paper}>
-        <img src={res?.image} alt="blog" className={classes.blogImg} />
+        <img
+          src={res?.image || placeholderPng}
+          alt="blog"
+          className={classes.blogImg}
+        />
         <Typography component="h1" variant="h5" className={classes.title}>
           ── Update Blog ──
         </Typography>
