@@ -97,7 +97,7 @@ function Login() {
   const classes = useStyles();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, googleProvider } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -118,6 +118,11 @@ function Login() {
       setLoading(false);
     },
   });
+
+  const handleGoogleProvider = () => {
+    googleProvider();
+    history.push("/");
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -173,14 +178,24 @@ function Login() {
                   />
                 </div>
               ) : (
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  className={classes.submit}
-                >
-                  Login
-                </Button>
+                <>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    className={classes.submit}
+                  >
+                    Login
+                  </Button>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    className={classes.submit}
+                    onClick={handleGoogleProvider}
+                  >
+                    With Google
+                  </Button>
+                </>
               )}
             </form>
           </Grid>
