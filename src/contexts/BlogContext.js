@@ -17,14 +17,13 @@ export function BlogProvider({ children }) {
 
   function getOneBlog(id) {
     const result = currentBlogs?.filter((item) => item.id === id);
-    // console.log(result);
     return result;
-    // setDetailBlog(result);
   }
 
-  // useEffect(() => {
-  //   getOneBlog(id);
-  // }, [id]);
+  function deleteOneBlog(id) {
+    const contactRef = firebaseDB.ref("blogs").child(id);
+    contactRef.remove();
+  }
 
   useEffect(() => {
     const blogRef = firebaseDB.ref("blogs");
@@ -44,6 +43,7 @@ export function BlogProvider({ children }) {
     addBlog,
     currentBlogs,
     getOneBlog,
+    deleteOneBlog,
   };
 
   return <BlogContext.Provider value={value}>{children}</BlogContext.Provider>;

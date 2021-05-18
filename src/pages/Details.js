@@ -16,6 +16,7 @@ import { useBlog } from "../contexts/BlogContext";
 import { useAuth } from "../contexts/AuthContext";
 import Button from "@material-ui/core/Button";
 import loadingGif from "../assets/loading.gif";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -64,11 +65,18 @@ const useStyles = makeStyles({
 
 export default function Details({ match }) {
   const classes = useStyles();
-  const { getOneBlog } = useBlog();
+  const { getOneBlog, deleteOneBlog } = useBlog();
   const { currentUser } = useAuth();
+  const history = useHistory();
 
   const result = getOneBlog(match.params.id);
   console.log({ result });
+
+  const deleteHandler = (id) => {
+    console.log("DeleteHandler", id);
+    deleteOneBlog(id);
+    history.push("/");
+  };
 
   return (
     <div className={classes.root}>
@@ -131,7 +139,11 @@ export default function Details({ match }) {
             {item.author === currentUser?.email ? (
               <div className={classes.buttonGroup}>
                 <Button variant="contained">Update</Button>
-                <Button variant="contained" color="secondary">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => deleteHandler(item.id)}
+                >
                   Delete
                 </Button>
               </div>
@@ -141,7 +153,7 @@ export default function Details({ match }) {
       ) : result === undefined ? (
         <img src={loadingGif} alt="loading" />
       ) : (
-        "Others"
+        <p>No data available.</p>
       )}
     </div>
   );
