@@ -33,6 +33,12 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    backgroundColor: "#046582",
+    color: "white",
+    fontWeight: "bold",
+    "&:hover": {
+      color: "#046582",
+    },
   },
   title: {
     fontSize: 35,
@@ -136,7 +142,6 @@ export default function UpdateBlog({ match }) {
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
             className={classes.submit}
             onClick={updateBlogHandler}
           >
