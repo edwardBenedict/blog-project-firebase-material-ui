@@ -41,7 +41,7 @@ const Main = () => {
       </Typography>
       <>
         <Grid container className={classes.root} spacing={5} justify="center">
-          <Grid item xs={9}>
+          <Grid item xs={18}>
             <Grid container justify="center" spacing={5}>
               {currentBlogs === undefined ? (
                 <img src={loadingGif} alt="loading" />
@@ -52,7 +52,7 @@ const Main = () => {
                   </Grid>
                 ))
               ) : (
-                "No data available"
+                <h3>No data available.</h3>
               )}
             </Grid>
           </Grid>
