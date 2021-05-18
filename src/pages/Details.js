@@ -13,6 +13,9 @@ import placeholder from "../assets/placeholder.png";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import moment from "moment";
 import { useBlog } from "../contexts/BlogContext";
+import { useAuth } from "../contexts/AuthContext";
+import Button from "@material-ui/core/Button";
+import loadingGif from "../assets/loading.gif";
 
 const useStyles = makeStyles({
   root: {
@@ -27,7 +30,7 @@ const useStyles = makeStyles({
     // maxWidth: 700,
   },
   media: {
-    height: 500,
+    height: 300,
   },
   module: {
     display: "-webkit-box",
@@ -51,11 +54,18 @@ const useStyles = makeStyles({
     textAlign: "center",
     margin: 20,
   },
+  buttonGroup: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 20,
+  },
 });
 
 export default function Details({ match }) {
   const classes = useStyles();
   const { getOneBlog } = useBlog();
+  const { currentUser } = useAuth();
 
   const result = getOneBlog(match.params.id);
   console.log({ result });
@@ -65,52 +75,74 @@ export default function Details({ match }) {
       <Typography className={classes.title} variant="h3" noWrap>
         Details
       </Typography>
-      {result &&
+      {result?.length > 0 ? (
         result?.map((item, index) => (
-          <Card className={classes.cardRoot} key={index}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={item.image || placeholder}
-                title={item.title}
-              />
-              <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {item.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {moment(item.published_date).format("MMM DD, YYYY")}
-                </Typography>
-                <p className={classes.module}>{item.content}</p>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <AccountCircle className={classes.avatar} />
-              <Typography gutterBottom variant="h6" component="h2">
-                {item.author}
-              </Typography>
-            </CardActions>
-            <CardActions>
-              <IconButton
-                aria-label="add to favorites"
-                className={classes.image}
-              >
-                <FavoriteIcon
-                  color={item.get_like_count > 0 ? "secondary" : "disabled"}
+          <div key={index}>
+            <Card className={classes.cardRoot} key={index}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={item.image || placeholder}
+                  title={item.title}
                 />
-              </IconButton>
-              <Typography variant="body2" color="textSecondary">
-                {item.get_like_count}
-              </Typography>
-              <IconButton aria-label="comment count" className={classes.image}>
-                <ChatBubbleOutlineIcon />
-              </IconButton>
-              <Typography variant="body2" color="textSecondary">
-                {item.get_comment_count}
-              </Typography>
-            </CardActions>
-          </Card>
-        ))}
+                <CardContent className={classes.cardContent}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {item.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {moment(item.published_date).format("MMM DD, YYYY")}
+                  </Typography>
+                  <p className={classes.module}>{item.content}</p>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <AccountCircle className={classes.avatar} />
+                <Typography gutterBottom variant="h6" component="h2">
+                  {item.author}
+                </Typography>
+              </CardActions>
+              <CardActions>
+                <IconButton
+                  aria-label="add to favorites"
+                  className={classes.image}
+                >
+                  <FavoriteIcon
+                    color={item.get_like_count > 0 ? "secondary" : "disabled"}
+                  />
+                </IconButton>
+                <Typography variant="body2" color="textSecondary">
+                  {item.get_like_count}
+                </Typography>
+                <IconButton
+                  aria-label="comment count"
+                  className={classes.image}
+                >
+                  <ChatBubbleOutlineIcon />
+                </IconButton>
+                <Typography variant="body2" color="textSecondary">
+                  {item.get_comment_count}
+                </Typography>
+              </CardActions>
+            </Card>
+            {item.author === currentUser?.email ? (
+              <div className={classes.buttonGroup}>
+                <Button variant="contained">Update</Button>
+                <Button variant="contained" color="secondary">
+                  Delete
+                </Button>
+              </div>
+            ) : null}
+          </div>
+        ))
+      ) : result === undefined ? (
+        <img src={loadingGif} alt="loading" />
+      ) : (
+        "Others"
+      )}
     </div>
   );
 }
