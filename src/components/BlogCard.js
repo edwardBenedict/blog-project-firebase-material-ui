@@ -13,6 +13,8 @@ import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import placeholder from "../assets/placeholder.png";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import moment from "moment";
+import { useAuth } from "../contexts/AuthContext";
+import { toastErrorNotify } from "../helpers/ToastNotify";
 
 const useStyles = makeStyles({
   root: {
@@ -58,7 +60,12 @@ export default function MediaCard({ post }) {
   } = post;
   const classes = useStyles();
   const history = useHistory();
+  const { currentUser } = useAuth();
+
   const openDetails = () => {
+    if (!currentUser) {
+      toastErrorNotify("Login for detials of blog!");
+    }
     history.push(`/detail/${id}`);
   };
 
