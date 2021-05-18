@@ -25,6 +25,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 70,
+    marginBottom: 20,
   },
   cardRoot: {
     minWidth: 250,
