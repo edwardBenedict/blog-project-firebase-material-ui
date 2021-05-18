@@ -24,6 +24,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 70,
   },
   cardRoot: {
     minWidth: 250,

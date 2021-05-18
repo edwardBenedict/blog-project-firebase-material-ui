@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Girassol",
     textAlign: "center",
   },
+  mainRoot: {
+    marginTop: 70,
+  },
 }));
 
 const Main = () => {
@@ -32,7 +35,7 @@ const Main = () => {
   const { currentBlogs } = useBlog();
 
   return (
-    <div>
+    <div className={classes.mainRoot}>
       <Typography className={classes.title} variant="h3" noWrap>
         Dashboard
       </Typography>

@@ -10,6 +10,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import BookIcon from "@material-ui/icons/Book";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import cwJpeg from "../assets/cw.jpeg";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -95,6 +96,12 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: "black",
   },
+  cwImg: {
+    width: 40,
+  },
+  appBar: {
+    backgroundColor: "#046582",
+  },
 }));
 
 export default function PrimarySearchAppBar() {
@@ -166,7 +173,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -175,7 +182,7 @@ export default function PrimarySearchAppBar() {
             aria-label="open drawer"
             onClick={handleDashboard}
           >
-            <BookIcon />
+            <img src={cwJpeg} alt="cw" className={classes.cwImg} />
           </IconButton>
           <Link to="/" className={classes.login}>
             <Typography className={classes.title} variant="h6" noWrap>

@@ -26,14 +26,15 @@ const validationSchema = yup.object({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "calc(100vh - 64px)",
+    height: "calc(100vh - 68px)",
     "& .MuiPaper-root": {
       borderRadius: "10px",
       boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75);",
       height: "fit-content",
-      marginTop: 40,
+      marginTop: 20,
       maxWidth: "500px",
     },
+    marginTop: 68,
   },
   image: {
     backgroundImage: "url(https://picsum.photos/1600/900)",
@@ -45,10 +46,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundPosition: "center",
     width: "100%",
-    paddingTop: "40px",
   },
   paper: {
-    margin: theme.spacing(8, 8),
+    margin: theme.spacing(4, 8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

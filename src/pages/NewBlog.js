@@ -34,7 +34,7 @@ const NewBlog = () => {
   // console.log("currentBlogs", currentBlogs);
 
   return (
-    <div>
+    <div style={{ marginTop: 75 }}>
       <BlogForm
         newBlog={newBlog}
         setNewBlog={setNewBlog}
