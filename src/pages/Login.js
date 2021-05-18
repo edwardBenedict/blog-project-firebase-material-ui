@@ -97,7 +97,7 @@ function Login() {
   const classes = useStyles();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const { login, googleProvider } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -120,7 +120,7 @@ function Login() {
   });
 
   const handleGoogleProvider = () => {
-    googleProvider();
+    loginWithGoogle();
     history.push("/");
   };
 

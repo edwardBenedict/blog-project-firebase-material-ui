@@ -24,7 +24,7 @@ export function AuthProvider({ children }) {
     auth.signOut();
   }
 
-  function googleProvider() {
+  function loginWithGoogle() {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     googleProvider.setCustomParameters({ prompt: "select_account" });
     auth.signInWithPopup(googleProvider);
@@ -59,7 +59,7 @@ export function AuthProvider({ children }) {
     resetPassword,
     updatePassword,
     updateEmail,
-    googleProvider,
+    loginWithGoogle,
   };
 
   return (
