@@ -14,6 +14,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { useAuth } from "../contexts/AuthContext";
 import loadingGif from "../assets/loading.gif";
+import googlePng from "../assets/google.png";
 
 const validationSchema = yup.object({
   email: yup
@@ -90,6 +91,14 @@ const useStyles = makeStyles((theme) => ({
   bottomLink: {
     display: "flex",
     justifyContent: "space-evenly",
+  },
+  googleImg: {
+    width: 75,
+    marginLeft: 10,
+  },
+  googleBtn: {
+    backgroundColor: "white",
+    fontWeight: "bold",
   },
 }));
 
@@ -190,10 +199,15 @@ function Login() {
                   <Button
                     fullWidth
                     variant="contained"
-                    className={classes.submit}
                     onClick={handleGoogleProvider}
+                    className={classes.googleBtn}
                   >
-                    With Google
+                    With{" "}
+                    <img
+                      src={googlePng}
+                      alt="google"
+                      className={classes.googleImg}
+                    />
                   </Button>
                 </>
               )}
