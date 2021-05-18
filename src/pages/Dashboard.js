@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontFamily: "Girassol",
     textAlign: "center",
+    color: "#046582",
   },
   mainRoot: {
     marginTop: 70,
@@ -41,7 +42,7 @@ const Main = () => {
       </Typography>
       <>
         <Grid container className={classes.root} spacing={5} justify="center">
-          <Grid item xs={18}>
+          <Grid item xs={12}>
             <Grid container justify="center" spacing={5}>
               {currentBlogs === undefined ? (
                 <img src={loadingGif} alt="loading" />

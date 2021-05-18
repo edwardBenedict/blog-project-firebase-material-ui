@@ -50,6 +50,7 @@ const useStyles = makeStyles({
     fontFamily: "Girassol",
     textAlign: "center",
     margin: 20,
+    color: "#046582",
   },
   buttonGroup: {
     display: "flex",
