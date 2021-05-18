@@ -80,6 +80,10 @@ export default function Details({ match }) {
     toastSuccessNotify("Deleted successfully!");
   };
 
+  const updateHandler = (id) => {
+    history.push(`/update-blog/${id}`);
+  };
+
   return (
     <div className={classes.root}>
       <Typography className={classes.title} variant="h3" noWrap>
@@ -146,7 +150,12 @@ export default function Details({ match }) {
             </Card>
             {item.author === currentUser?.email ? (
               <div className={classes.buttonGroup}>
-                <Button variant="contained">Update</Button>
+                <Button
+                  variant="contained"
+                  onClick={() => updateHandler(item.id)}
+                >
+                  Update
+                </Button>
                 <Button
                   variant="contained"
                   color="secondary"

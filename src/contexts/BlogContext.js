@@ -25,6 +25,11 @@ export function BlogProvider({ children }) {
     contactRef.remove();
   }
 
+  function updateBlog(id, data) {
+    const contactRef = firebaseDB.ref("blogs").child(id);
+    contactRef.update(data);
+  }
+
   useEffect(() => {
     const blogRef = firebaseDB.ref("blogs");
     blogRef.on("value", (snapshot) => {
@@ -44,6 +49,7 @@ export function BlogProvider({ children }) {
     currentBlogs,
     getOneBlog,
     deleteOneBlog,
+    updateBlog,
   };
 
   return <BlogContext.Provider value={value}>{children}</BlogContext.Provider>;

@@ -10,6 +10,7 @@ import About from "../pages/About";
 import PrivateRouter from "./PrivateRouter";
 import NewBlog from "../pages/NewBlog.js";
 import Details from "../pages/Details.js";
+import UpdateBlog from "../pages/UpdateBlog";
 
 function AppRouter() {
   const [isAuth, setIsAuth] = useState(true);
@@ -20,6 +21,7 @@ function AppRouter() {
       <PrivateRouter path="/about" component={About} />
       <PrivateRouter path="/profile" component={Profile} />
       <PrivateRouter path="/new-blog" component={NewBlog} />
+      <PrivateRouter path="/update-blog/:id" component={UpdateBlog} />
       <PrivateRouter path="/detail/:id" exact component={Details} />
     </div>
   );
