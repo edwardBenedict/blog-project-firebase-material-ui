@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
@@ -106,7 +106,7 @@ function Login() {
   const classes = useStyles();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const { login, loginWithGoogle } = useAuth();
+  const { login, loginWithGoogle, currentUser } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -130,8 +130,14 @@ function Login() {
 
   const handleGoogleProvider = () => {
     loginWithGoogle();
-    history.push("/");
   };
+
+  useEffect(() => {
+    if (currentUser) {
+      history.push("/");
+    }
+    // console.log({ currentUser });
+  }, [currentUser, history]);
 
   return (
     <Grid container component="main" className={classes.root}>
